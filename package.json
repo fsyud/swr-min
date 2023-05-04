@@ -1,0 +1,30 @@
+{
+  "name": "useSwrPro",
+  "version": "1.0.0",
+  "description": "从 0 实现 useSWR",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ligdy7/useSwrPro.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ligdy7/useSwrPro/issues"
+  },
+  "homepage": "https://github.com/ligdy7/useSwrPro#readme",
+  "dependencies": {
+    "react": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.4",
+    "rollup": "^3.21.4",
+    "rollup-plugin-clear": "^2.0.7",
+    "rollup-plugin-typescript2": "^0.34.1",
+    "typescript": "^5.0.4"
+  }
+}
