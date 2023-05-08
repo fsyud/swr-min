@@ -6,5 +6,5 @@
 从 0 实现 useSWR
 
 ```
-import swr from 'useSwrMin'
+import swr from 'swr-min'
 ```
