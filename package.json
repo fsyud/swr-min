@@ -1,10 +1,18 @@
 {
   "name": "swr-min",
   "version": "1.0.0",
-  "description": "从 0 实现 useSWR",
+  "description": "从 0 实现 useSWR，用于远程数据获取的 React Hooks 库",
   "main": "dist/index.js",
   "modal": "dist/index.esm.js",
   "types": "dist/index.d.ts",
+  "keywords": [
+    "swr-min",
+    "react",
+    "hooks",
+    "request",
+    "cache",
+    "fetch"
+  ],
   "scripts": {
     "build": "rollup -c",
     "test": "jest"
@@ -14,9 +22,6 @@
     "type": "git",
     "url": "git+https://github.com/ligdy7/useSwrMin.git"
   },
-  "keywords": [
-    "ligdy"
-  ],
   "author": "",
   "license": "ISC",
   "bugs": {
