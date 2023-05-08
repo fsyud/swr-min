@@ -1,5 +1,5 @@
 {
-  "name": "useSwrPro",
+  "name": "swr-min",
   "version": "1.0.0",
   "description": "从 0 实现 useSWR",
   "main": "dist/index.js",
@@ -12,7 +12,7 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ligdy7/useSwrPro.git"
+    "url": "git+https://github.com/ligdy7/useSwrMin.git"
   },
   "keywords": [
     "ligdy"
@@ -20,9 +20,9 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ligdy7/useSwrPro/issues"
+    "url": "https://github.com/ligdy7/useSwrMin/issues"
   },
-  "homepage": "https://github.com/ligdy7/useSwrPro#readme",
+  "homepage": "https://github.com/ligdy7/useSwrMin#readme",
   "dependencies": {
     "react": "^18.2.0"
   },
