@@ -9,7 +9,7 @@
 
 # 使用
 
-从 0 实现 useSWR
+implement useSWR from 0
 
 ```
 import swr from 'swr-min'
