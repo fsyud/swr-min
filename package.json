@@ -1,6 +1,6 @@
 {
   "name": "swr-min",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "从 0 实现 useSWR，用于远程数据获取的 React Hooks 库",
   "main": "dist/index.js",
   "modal": "dist/index.esm.js",
