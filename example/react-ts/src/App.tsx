@@ -1,22 +1,19 @@
-import { useState, useEffect } from "react";
-import { useAsyncAwr } from 'swr-min';
-import axios from 'axios';
+import { useState } from "react";
+import { useAsyncAwr } from "swr-min";
+import axios from "axios";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 
-const  App = () => {
+const App = () => {
   const [count, setCount] = useState<number>(0);
 
-  const [data, isLoading, isError] = useAsyncAwr({ url: 'http://localhost:9090/test1',  fetcher: axios });
+  const [data, isLoading, isError] = useAsyncAwr({
+    url: "http://localhost:9090/test1",
+    fetcher: axios,
+  });
 
-  console.log(data, isLoading, isError, 'test13');
-
-  useEffect(() => {
-    axios.get('http://localhost:9090/test1').then((res: any) => {
-      console.log(res, 'res')
-    })
-  }, [])
+  console.log(data, isLoading, isError, "test13");
 
   return (
     <>
@@ -42,6 +39,6 @@ const  App = () => {
       </p>
     </>
   );
-}
+};
 
 export default App;

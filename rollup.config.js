@@ -24,7 +24,6 @@ export default defineConfig([
       }),
       commonjs(),
       babel({
-        extensions,
         exclude: "node_modules/**",
         babelHelpers: "runtime",
         plugins: ["@babel/plugin-transform-runtime"],
@@ -44,7 +43,6 @@ export default defineConfig([
       }),
       commonjs(),
       babel({
-        extensions,
         exclude: "node_modules/**",
         babelHelpers: "runtime",
         plugins: ["@babel/plugin-transform-runtime"],
@@ -64,7 +62,6 @@ export default defineConfig([
       }),
       commonjs(),
       babel({
-        extensions,
         exclude: "node_modules/**",
         babelHelpers: "runtime",
         plugins: ["@babel/plugin-transform-runtime"],
