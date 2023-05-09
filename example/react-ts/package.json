@@ -16,7 +16,7 @@
     "react-dom": "^18.2.0",
     "redux": "^4.2.1",
     "swr": "^2.1.5",
-    "swr-min": "^1.0.7"
+    "swr-min": "^1.0.9"
   },
   "devDependencies": {
     "@types/node": "^20.1.1",

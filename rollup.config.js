@@ -18,7 +18,7 @@ export default defineConfig([
     external: ["react", "react-dom"],
     plugins: [
       external(),
-      rollupTypescript(),
+      rollupTypescript({ tsconfig: "./tsconfig.json" }),
       nodeResolve({
         extensions,
       }),
@@ -37,7 +37,7 @@ export default defineConfig([
     external: ["react", "react-dom"],
     plugins: [
       external(),
-      rollupTypescript(),
+      rollupTypescript({ tsconfig: "./tsconfig.json" }),
       nodeResolve({
         extensions,
       }),
@@ -56,7 +56,7 @@ export default defineConfig([
     external: ["react", "react-dom"],
     plugins: [
       external(),
-      rollupTypescript(),
+      rollupTypescript({ tsconfig: "./tsconfig.json" }),
       nodeResolve({
         extensions,
       }),

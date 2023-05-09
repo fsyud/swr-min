@@ -17,8 +17,8 @@ dependencies:
     specifier: ^2.1.5
     version: 2.1.5(react@18.2.0)
   swr-min:
-    specifier: ^1.0.7
-    version: 1.0.7
+    specifier: ^1.0.9
+    version: 1.0.9
 
 devDependencies:
   '@types/node':
@@ -3178,8 +3178,8 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /swr-min@1.0.7:
-    resolution: {integrity: sha512-jYLIPTxcvKckWx6ORINrl2XvGEHmKIkKlAEnWl/BuZXpmh7XxOkdSSfAFKgAw9Mvb6HrSF1FfrVZp78VJrfHrQ==}
+  /swr-min@1.0.9:
+    resolution: {integrity: sha512-amjXjJcpvt5bp+sjqA3s50AgnLnC2k3FUS0k8vRppFJrVul5Eu5hVehw8Aa5hlaTzUwXOmZaASLtQdm6fqBKbw==}
     dependencies:
       react: 18.2.0
     dev: false
