@@ -70,7 +70,8 @@
     "declaration": true /*自动生成d.ts声明文件*/,
     "emitDeclarationOnly": true,
     "paths": {
-      "swr-min/_internal": ["./_internal/context.ts"]
+      "swr-min/_internal/context": ["./_internal/context"],
+      "swr-min/_internal/utils": ["./_internal/utils"]
     }
   },
   // 只编译 src 目录下的文件

@@ -1,11 +1,15 @@
 import { useState, useEffect, useContext } from "react";
-import useFetchConfigContext from "swr-min/_internal";
+import useFetchConfigContext from "swr-min/_internal/context";
 
-interface useSwrProps {
+export interface useSwrProps {
   url: string;
   fetcher: any;
   options?: {
     fetcher?: any;
+    loadingTimeout?: number;
+    onLoadingSlow?: (key: any, config: any) => void;
+    onSuccess?: (newData: object | null, key: any, config: any) => void;
+    onError?: (error: any, key: any, config: any) => void;
   };
 }
 
@@ -45,5 +49,9 @@ function useSwr({ url, fetcher, options = {} }: useSwrProps) {
 
   return [data, isLoading, isError];
 }
+
+// 导出 useFetchConfig
+const useFetchConfig = useFetchConfigContext.Provider;
+export { useFetchConfig };
 
 export default useSwr;
