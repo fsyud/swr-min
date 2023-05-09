@@ -7,11 +7,15 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "mock": "json-server ./src/mock/index.js -p 9090"
   },
   "dependencies": {
+    "axios": "^1.4.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "redux": "^4.2.1",
+    "swr": "^2.1.5"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
@@ -22,6 +26,7 @@
     "eslint": "^8.38.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.3.4",
+    "json-server": "^0.17.3",
     "typescript": "^5.0.2",
     "vite": "^4.3.2"
   }

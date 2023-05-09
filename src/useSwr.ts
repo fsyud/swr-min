@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import useFetchConfigContext from "swr-min/_internal/context";
+import useFetchConfigContext from "@_internal/context";
 
 export interface useSwrProps {
   url: string;

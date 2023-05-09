@@ -14,7 +14,7 @@
     // "sourceMap": true,                           /* Generates corresponding '.map' file. */
     // "outFile": "./",                             /* Concatenate and emit output to single file. */
     "outDir": "./dist" /* Redirect output structure to the directory. */,
-    "rootDir": "." /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */,
+    // "rootDir": "." /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */,
     "baseUrl": "./" /* Base directory to resolve non-absolute module names. */,
     // "composite": true,                           /* Enable project compilation */
     // "tsBuildInfoFile": "./",                     /* Specify file to store incremental compilation information */
@@ -70,8 +70,7 @@
     "declaration": true /*自动生成d.ts声明文件*/,
     "emitDeclarationOnly": true,
     "paths": {
-      "swr-min/_internal/context": ["./_internal/context"],
-      "swr-min/_internal/utils": ["./_internal/utils"]
+      "@_internal/*": ["./_internal/*"]
     }
   },
   // 只编译 src 目录下的文件

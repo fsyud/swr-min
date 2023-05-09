@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext, useCallback } from "react";
 import { useSwrProps } from "./useSwr";
-import useFetchConfigContext from "swr-min/_internal/context";
-import { getKeyArgs } from "swr-min/_internal/utils";
+import useFetchConfigContext from "@_internal/context";
+import { getKeyArgs } from "@_internal/utils";
 
 const useAsyncAwr = ({ url, fetcher, options }: useSwrProps) => {
   const [data, setData] = useState<object | null>(null);
