@@ -8,16 +8,18 @@
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "mock": "json-server ./src/mock/index.js -p 9090"
+    "mock": "json-server ./src/mock/index.cjs -p 9090"
   },
   "dependencies": {
     "axios": "^1.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "redux": "^4.2.1",
-    "swr": "^2.1.5"
+    "swr": "^2.1.5",
+    "swr-min": "^1.0.6"
   },
   "devDependencies": {
+    "@types/node": "^20.1.1",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@typescript-eslint/eslint-plugin": "^5.57.1",

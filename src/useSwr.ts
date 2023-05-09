@@ -1,17 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import useFetchConfigContext from "@_internal/context";
-
-export interface useSwrProps {
-  url: string;
-  fetcher: any;
-  options?: {
-    fetcher?: any;
-    loadingTimeout?: number;
-    onLoadingSlow?: (key: any, config: any) => void;
-    onSuccess?: (newData: object | null, key: any, config: any) => void;
-    onError?: (error: any, key: any, config: any) => void;
-  };
-}
+import { useSwrProps } from "./types";
 
 function useSwr({ url, fetcher, options = {} }: useSwrProps) {
   const [data, setData] = useState<object | null>(null);
