@@ -1,6 +1,6 @@
 {
   "name": "swr-min",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Implement useSWR from 0, a React Hooks library for remote data fetching",
   "main": "dist/index.js",
   "modal": "dist/index.esm.js",
