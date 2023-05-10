@@ -74,6 +74,6 @@
     }
   },
   // 只编译 src 目录下的文件
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "_internal/types.ts"],
   "exclude": ["test/**/*", "dist", "examples"]
 }

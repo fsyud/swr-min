@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
-import useFetchConfigContext from "@_internal/context";
-import { useSwrProps } from "./types";
+import { useFetchConfigContext } from "@_internal/index";
+import { useSwrProps } from "@_internal/types";
 
 function useSwr({ url, fetcher, options = {} }: useSwrProps) {
   const [data, setData] = useState<object | null>(null);

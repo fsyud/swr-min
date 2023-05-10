@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useAsyncAwr } from "swr-min";
+import useSWR from "swr";
 import axios from "axios";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
@@ -13,7 +14,22 @@ const App = () => {
     fetcher: axios,
   });
 
-  console.log(data, isLoading, isError, "test13");
+  const [data1, isLoading1, isError1] = useAsyncAwr({
+    url: `http://localhost:9090/test${data ? data?.data.numberTest : ""}`,
+    fetcher: axios,
+  });
+
+  console.log(data, isLoading, isError, "test1");
+
+  console.log(data1, isLoading1, isError1, "test2");
+
+  // const { data: a3 } = useSWR("http://localhost:9090/test1", axios);
+
+  // const { data: a4 } = useSWR(
+  //   `http://localhost:9090/test${a3 ? a3.data.numberTest : ""}`,
+  //   axios
+  // );
+  // console.log(a3, a4, "test99");
 
   return (
     <>

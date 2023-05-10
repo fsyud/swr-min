@@ -1,6 +1,4 @@
 import { createContext } from "react";
 
-const useFetchConfigContext = createContext({});
+export const useFetchConfigContext = createContext({});
 useFetchConfigContext.displayName = "useFetchConfigContext";
-
-export default useFetchConfigContext;

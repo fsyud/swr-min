@@ -11,7 +11,7 @@ import babel from "@rollup/plugin-babel"; // es6 -> es5
 const extensions = [".ts"];
 
 export default defineConfig([
-  // CommonJS
+  // CommonJS 用于 Node .cjs 代表使用 CommonJS 模块
   {
     input: "src/index.ts",
     output: { file: "dist/index.cjs", format: "cjs", indent: false },
@@ -33,7 +33,7 @@ export default defineConfig([
   // ES
   {
     input: "src/index.ts",
-    output: { file: "dist/index.js", format: "es", indent: false },
+    output: { file: "dist/index.esm.js", format: "es", indent: false },
     external: ["react", "react-dom"],
     plugins: [
       external(),
@@ -49,7 +49,7 @@ export default defineConfig([
       }),
     ],
   },
-  // ES for Browsers
+  // ES for Browsers .mjs 代表使用 ES 模块 es module，使用import进行加载。
   {
     input: "src/index.ts",
     output: { file: "dist/index.mjs", format: "es", indent: false },
