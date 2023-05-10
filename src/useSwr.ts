@@ -1,8 +1,8 @@
-import { useState, useEffect, useContext } from "react";
-import { useFetchConfigContext } from "@_internal/index";
+import { useEffect, useState, useContext, useCallback } from "react";
+import { useFetchConfigContext, getKeyArgs } from "@_internal/index";
 import { useSwrProps } from "@_internal/types";
 
-function useSwr({ url, fetcher, options = {} }: useSwrProps) {
+const useSwr = ({ url, fetcher, options }: useSwrProps) => {
   const [data, setData] = useState<object | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isError, setIsError] = useState<boolean>(false);
@@ -10,37 +10,50 @@ function useSwr({ url, fetcher, options = {} }: useSwrProps) {
   // 通过 useContext 获取 useFetchConfigContext 的全局配置
   const config = Object.assign({}, useContext(useFetchConfigContext), options);
 
-  let fn = fetcher;
+  const key = getKeyArgs(url);
 
-  if (typeof fn === "undefined") {
-    // 使用全局配置的 fetcher
-    fn = config.fetcher;
-  }
+  const fetchData = useCallback(async (): Promise<any> => {
+    if (!key) return false;
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsError(false);
-      setIsLoading(true);
+    setIsLoading(true);
 
-      try {
-        // 这里直接调用外部传进来的 fetcher，并使用 url 作为参数
-        const newData = await fn(url);
-        setData(newData);
-      } catch (error) {
-        setIsError(false);
+    let loading = true;
+
+    let newData: object | null;
+
+    try {
+      // 请求超时触发 onLoadingSlow 回调函数
+      if (config.loadingTimeout) {
+        setTimeout(() => {
+          if (loading)
+            config.onLoadingSlow && config.onLoadingSlow(key, config);
+        }, config.loadingTimeout);
       }
 
-      setIsLoading(false);
-    };
+      newData = await fetcher(key);
 
+      // 触发请求成功时的回调函数
+      config.onSuccess && config.onSuccess(newData, key, config);
+
+      setData(newData);
+      setIsLoading(false);
+    } catch (error) {
+      setIsError(true);
+      setIsLoading(false);
+
+      // 触发请求失败时的回调函数
+      config.onError && config.onError(error, key, config);
+    }
+
+    loading = false;
+    return true;
+  }, [key]);
+
+  useEffect(() => {
     fetchData();
-  }, [url]);
+  }, [fetchData]);
 
   return [data, isLoading, isError];
-}
-
-// 导出 useFetchConfig
-const useFetchConfig = useFetchConfigContext.Provider;
-export { useFetchConfig };
+};
 
 export default useSwr;

@@ -43,6 +43,14 @@ So how to deal with this kind of demand in the mode of useFetch, when the /api/a
 
 Does this mean that we can assume that when the interface is called, the url parameter throws an exception, which means that its dependencies are not ready yet, suspend the request for this data; wait until the dependencies are ready, and then initiate a new one for the ready data A round of requests to solve the problem of dependent requests.
 
+## Stale-while-revalidate
+
+The core is to allow the client to use stale data in the cache first, and then asynchronously re-validate and update the cache in the background
+
+![M8LBGIL](https://github.com/ligdy7/useSwrMin/assets/26371465/84e95f9a-f623-42c7-acda-30248df45c60)
+
+> It can be implemented by using ES6's new Map() to record the requested data result in the form of {[key]: [value]}
+
 ## License
 
 The MIT License.
