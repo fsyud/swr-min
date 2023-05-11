@@ -1,7 +1,10 @@
 import { useEffect, useState, useContext, useCallback, useRef } from "react";
 import { useFetchConfigContext, getKeyArgs } from "./../_internal/index";
 import { useSwrProps } from "./../_internal/types";
-import { cacheGet } from "./cache";
+import { Key } from "./../_internal/utils";
+import { CONCURRENT_PROMISES } from "./cache";
+import { State } from "./types";
+import { cacheGet, cacheSet } from "./cache";
 
 const useSwr = ({ url, fetcher, options }: useSwrProps) => {
   // 约定 `key` 是发送请求的唯一标识符
@@ -20,14 +23,19 @@ const useSwr = ({ url, fetcher, options }: useSwrProps) => {
     fn = config.fetcher;
   }
 
+  // 通过useRef存值
+  const unmountedRef = useRef<boolean>(false);
+  const keyRef = useRef<Key>(key);
+
   const revalidate = useCallback(async (): Promise<any> => {
-    if (!key) return false;
+    // 当前 key 为空（及并行请求缓存）｜ 避免重复请求阻断
+    if (!key || CONCURRENT_PROMISES[key]) return false;
 
     setIsValidating(true);
 
     let loading = true;
 
-    let newData: object | null;
+    let newData: State;
 
     try {
       // 请求超时触发 onLoadingSlow 回调函数
@@ -38,14 +46,22 @@ const useSwr = ({ url, fetcher, options }: useSwrProps) => {
         }, config.loadingTimeout);
       }
 
-      newData = await fetcher(key);
+      // 将请求记录到 CONCURRENT_PROMISES 对象
+      CONCURRENT_PROMISES[key] = fn(key);
+
+      newData = await CONCURRENT_PROMISES[key];
 
       // 触发请求成功时的回调函数
       config.onSuccess && config.onSuccess(newData, key, config);
 
+      // 将请求结果存储到 缓存 cache 中
+      cacheSet(key, newData);
       setData(newData);
+
       setIsValidating(false);
     } catch (error) {
+      delete CONCURRENT_PROMISES[key];
+
       setIsError(true);
       setIsValidating(false);
 

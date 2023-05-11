@@ -15,10 +15,10 @@ export function cacheClear() {
 }
 
 // 记录并发的请求函数集合
-export const CONCURRENT_PROMISES = {};
+export const CONCURRENT_PROMISES: any = {};
 
 // 记录聚焦的验证函数集合
-export const FOCUS_REVALIDATORS = {};
+export const FOCUS_REVALIDATORS: any = {};
 
 // 记录缓存中的验证函数集合
-export const CACHE_REVALIDATORS = {};
+export const CACHE_REVALIDATORS: any = {};

@@ -18,7 +18,6 @@ export const isFunction = <
 
 export const getKeyArgs = (_key: Key) => {
   let key: any;
-  console.log(isFunction(_key), "isFunction(_key)");
   if (isFunction(_key)) {
     // 核心所在:
     // 当 url 抛出异常时意味着它的依赖还没有就绪则暂停请求
