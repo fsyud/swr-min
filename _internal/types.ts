@@ -1,5 +1,5 @@
 export interface useSwrProps {
-  url: string;
+  url: any;
   fetcher: any;
   options?: {
     fetcher?: any;

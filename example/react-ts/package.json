@@ -8,12 +8,13 @@
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "mock": "json-server ./src/mock/index.cjs -p 9090"
+    "mock": "json-server ./src/mock/index.cjs -p 9099"
   },
   "dependencies": {
     "axios": "^1.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.11.1",
     "redux": "^4.2.1",
     "swr": "^2.1.5",
     "swr-min": "^1.0.9"
