@@ -1,7 +1,7 @@
-import { useEffect, useState, useContext, useCallback, useRef } from "react";
+import { useEffect, useState, useContext, useCallback } from "react";
 import { useFetchConfigContext, getKeyArgs } from "./../_internal/index";
 import { useSwrProps } from "./../_internal/types";
-import { Key } from "./../_internal/utils";
+// import { Key } from "./../_internal/utils";
 import { CONCURRENT_PROMISES } from "./cache";
 import { State } from "./types";
 import { cacheGet, cacheSet } from "./cache";
@@ -23,13 +23,9 @@ const useSwr = ({ url, fetcher, options }: useSwrProps) => {
     fn = config.fetcher;
   }
 
-  // 通过useRef存值
-  const unmountedRef = useRef<boolean>(false);
-  const keyRef = useRef<Key>(key);
-
   const revalidate = useCallback(async (): Promise<any> => {
-    // 当前 key 为空（及并行请求缓存）｜ 避免重复请求阻断
-    if (!key || CONCURRENT_PROMISES[key]) return false;
+    // 当前 key 为空（及并行请求缓存）
+    if (!key) return false;
 
     setIsValidating(true);
 
@@ -74,6 +70,7 @@ const useSwr = ({ url, fetcher, options }: useSwrProps) => {
   }, [key]);
 
   useEffect(() => {
+    // 在 key 更新之后，我们需要将其标记为 mounted
     revalidate();
   }, [revalidate]);
 

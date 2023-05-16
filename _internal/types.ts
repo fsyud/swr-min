@@ -7,5 +7,7 @@ export interface useSwrProps {
     onLoadingSlow?: (key: any, config: any) => void;
     onSuccess?: (newData: object | null, key: any, config: any) => void;
     onError?: (error: any, key: any, config: any) => void;
+    revalidateOnFocus?: any;
+    focusThrottleInterval?: any;
   };
 }

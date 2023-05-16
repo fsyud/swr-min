@@ -33,3 +33,63 @@ export const getKeyArgs = (_key: Key) => {
   }
   return [key];
 };
+
+export function deepEqual(obj1: any, obj2: any) {
+  // 如果 obj1 和 obj2 都是基本类型，则直接比较它们的值
+  if (obj1 === obj2) {
+    return true;
+  }
+
+  // 如果 obj1 和 obj2 有任意一个不是对象，则它们不相等
+  if (
+    typeof obj1 !== "object" ||
+    typeof obj2 !== "object" ||
+    obj1 === null ||
+    obj2 === null
+  ) {
+    return false;
+  }
+
+  // 获取 obj1 和 obj2 的属性名数组
+  const obj1Props = Object.keys(obj1);
+  const obj2Props = Object.keys(obj2);
+
+  // 如果属性名数量不同，则 obj1 和 obj2 不相等
+  if (obj1Props.length !== obj2Props.length) {
+    return false;
+  }
+
+  // 逐个比较属性值
+  for (const prop of obj1Props) {
+    // eslint-disable-next-line no-prototype-builtins
+    if (!obj2.hasOwnProperty(prop)) {
+      return false;
+    }
+
+    if (!deepEqual(obj1[prop], obj2[prop])) {
+      return false;
+    }
+  }
+
+  // 如果以上都通过，则 obj1 和 obj2 相等
+  return true;
+}
+
+export function throttle(func: any, delay: any) {
+  let timer: any = null;
+  let lastCall = 0;
+
+  return function (...args: any[]) {
+    const now = new Date().getTime();
+    if (now - lastCall < delay) {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        lastCall = now;
+        func(...args);
+      }, delay - (now - lastCall));
+    } else {
+      lastCall = now;
+      func(...args);
+    }
+  };
+}
